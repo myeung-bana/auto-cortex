@@ -9,9 +9,11 @@ import {
   TableHeader,
   TableRow,
 } from "@autocore/ui"
-import { Plus, User } from "lucide-react"
+import { Archive, Plus, User } from "lucide-react"
+import { TableRowActions } from "@/components/actions/table-row-actions"
+import { archiveClientAction } from "@/lib/actions/clients"
 import { getDataProvider } from "@/lib/data"
-import { getSessionUser } from "@/lib/session/mock-session"
+import { getSessionUser } from "@/lib/session"
 import { ROUTES } from "@/lib/constants/routes"
 import { formatDate } from "@autocore/utils"
 import { ClientSearch } from "@/components/clients/client-search"
@@ -69,6 +71,7 @@ export default async function ClientsPage({ searchParams }: ClientsPageProps) {
                 <TableHead>Email</TableHead>
                 <TableHead>Phone</TableHead>
                 <TableHead>Added</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -85,6 +88,19 @@ export default async function ClientsPage({ searchParams }: ClientsPageProps) {
                   <TableCell>{client.email ?? "—"}</TableCell>
                   <TableCell>{client.phone ?? "—"}</TableCell>
                   <TableCell>{formatDate(client.createdAt)}</TableCell>
+                  <TableCell>
+                    <TableRowActions
+                      viewHref={ROUTES.clientDetail(client.id)}
+                      editHref={ROUTES.clientEdit(client.id)}
+                      destructive={{
+                        label: "Archive client",
+                        description: `Archive ${client.fullName}? The record will be hidden from the client list.`,
+                        confirmLabel: "Archive client",
+                        icon: <Archive className="h-4 w-4" />,
+                        onConfirm: archiveClientAction.bind(null, client.id),
+                      }}
+                    />
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

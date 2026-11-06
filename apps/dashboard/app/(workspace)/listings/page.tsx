@@ -9,16 +9,22 @@ import {
   TableHeader,
   TableRow,
 } from "@autocore/ui"
-import { Car, Plus } from "lucide-react"
+import { Archive, Car, Plus } from "lucide-react"
+import { TableRowActions } from "@/components/actions/table-row-actions"
+import { archiveListingAction } from "@/lib/actions/listings"
 import { getDataProvider } from "@/lib/data"
-import { getSessionUser } from "@/lib/session/mock-session"
+import { getSessionUser } from "@/lib/session"
 import { ROUTES } from "@/lib/constants/routes"
 import { formatPriceLabel, type ListingStatus } from "@autocore/utils"
+import { getTaxonomyLabeler } from "@/lib/taxonomies/provider"
 import { ListingStatusBadge } from "@/components/listings/listing-status-badge"
 import { ListingSearch } from "@/components/listings/listing-search"
+import { ListingViewToggle } from "@/components/listings/listing-view-toggle"
+import { listingCoverUrl } from "@/lib/listings/cover-image"
+import { ListingImage } from "@/components/listings/listing-image"
 
 interface ListingsPageProps {
-  searchParams: Promise<{ q?: string; status?: string }>
+  searchParams: Promise<{ q?: string; status?: string; view?: string }>
 }
 
 export default async function ListingsPage({
@@ -27,8 +33,10 @@ export default async function ListingsPage({
   const user = await getSessionUser()
   if (!user) return null
 
-  const { q, status } = await searchParams
+  const { q, status, view: viewParam } = await searchParams
+  const view = viewParam === "grid" ? "grid" : "list"
   const provider = getDataProvider()
+  const labelFor = await getTaxonomyLabeler(["makes"])
   const validStatuses: ListingStatus[] = [
     "AVAILABLE",
     "RESERVED",
@@ -64,11 +72,15 @@ export default async function ListingsPage({
         }
       />
 
-      <ListingSearch
-        defaultQuery={q}
-        defaultStatus={status}
-        nature={businessSpace.nature}
-      />
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <ListingSearch
+          defaultQuery={q}
+          defaultStatus={status}
+          view={view}
+          nature={businessSpace.nature}
+        />
+        <ListingViewToggle view={view} query={q} status={status} />
+      </div>
 
       {listings.length === 0 ? (
         <div className="flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center">
@@ -85,6 +97,51 @@ export default async function ListingsPage({
             </Button>
           )}
         </div>
+      ) : view === "grid" ? (
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {listings.map((listing) => (
+            <article key={listing.id} className="bg-card overflow-hidden rounded-lg border">
+              <Link href={ROUTES.listingDetail(listing.id)} className="block">
+                <ListingImage
+                  src={listingCoverUrl(listing.images)}
+                  className="bg-muted h-48 w-full object-cover"
+                />
+              </Link>
+              <div className="space-y-3 p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <Link
+                      href={ROUTES.listingDetail(listing.id)}
+                      className="font-medium hover:underline"
+                    >
+                      {listing.title}
+                    </Link>
+                    <p className="text-muted-foreground text-xs">
+                      {labelFor("makes", listing.make)} {listing.model} · {listing.year}
+                    </p>
+                  </div>
+                  <ListingStatusBadge status={listing.status} />
+                </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium">
+                    {formatPriceLabel(businessSpace.nature, listing.price)}
+                  </p>
+                  <TableRowActions
+                    viewHref={ROUTES.listingDetail(listing.id)}
+                    editHref={ROUTES.listingEdit(listing.id)}
+                    destructive={{
+                      label: "Archive listing",
+                      description: `Archive ${listing.title}? It will be hidden from your inventory.`,
+                      confirmLabel: "Archive listing",
+                      icon: <Archive className="h-4 w-4" />,
+                      onConfirm: archiveListingAction.bind(null, listing.id),
+                    }}
+                  />
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       ) : (
         <div className="bg-card rounded-lg border">
           <Table>
@@ -94,21 +151,30 @@ export default async function ListingsPage({
                 <TableHead>Year</TableHead>
                 <TableHead>Price</TableHead>
                 <TableHead>Status</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {listings.map((listing) => (
                 <TableRow key={listing.id}>
                   <TableCell>
-                    <Link
-                      href={ROUTES.listingDetail(listing.id)}
-                      className="text-primary font-medium hover:underline"
-                    >
-                      {listing.title}
-                    </Link>
-                    <p className="text-muted-foreground text-xs">
-                      {listing.make} {listing.model}
-                    </p>
+                    <div className="flex items-center gap-3">
+                      <ListingImage
+                        src={listingCoverUrl(listing.images)}
+                        className="bg-muted h-12 w-16 rounded-md object-cover"
+                      />
+                      <div>
+                        <Link
+                          href={ROUTES.listingDetail(listing.id)}
+                          className="text-primary font-medium hover:underline"
+                        >
+                          {listing.title}
+                        </Link>
+                        <p className="text-muted-foreground text-xs">
+                          {labelFor("makes", listing.make)} {listing.model}
+                        </p>
+                      </div>
+                    </div>
                   </TableCell>
                   <TableCell>{listing.year}</TableCell>
                   <TableCell>
@@ -116,6 +182,19 @@ export default async function ListingsPage({
                   </TableCell>
                   <TableCell>
                     <ListingStatusBadge status={listing.status} />
+                  </TableCell>
+                  <TableCell>
+                    <TableRowActions
+                      viewHref={ROUTES.listingDetail(listing.id)}
+                      editHref={ROUTES.listingEdit(listing.id)}
+                      destructive={{
+                        label: "Archive listing",
+                        description: `Archive ${listing.title}? It will be hidden from your inventory.`,
+                        confirmLabel: "Archive listing",
+                        icon: <Archive className="h-4 w-4" />,
+                        onConfirm: archiveListingAction.bind(null, listing.id),
+                      }}
+                    />
                   </TableCell>
                 </TableRow>
               ))}

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "f38e4e38-d7ec-5e95-8f3a-bb23983c3145",
+    "slug": "under-1000",
+    "label": {
+      "en": "Under 1.0L"
+    },
+    "unit": "cc",
+    "min_cc": 0,
+    "max_cc": 1000,
+    "sort_order": 0
+  },
+  {
+    "id": "252296e9-1452-5dae-8a7b-8670923aaf6d",
+    "slug": "1000-1500",
+    "label": {
+      "en": "1.0L – 1.5L"
+    },
+    "unit": "cc",
+    "min_cc": 1000,
+    "max_cc": 1500,
+    "sort_order": 1
+  },
+  {
+    "id": "d95ff68d-4450-5242-9b9d-5765ba9cf0af",
+    "slug": "1500-2000",
+    "label": {
+      "en": "1.5L – 2.0L"
+    },
+    "unit": "cc",
+    "min_cc": 1500,
+    "max_cc": 2000,
+    "sort_order": 2
+  },
+  {
+    "id": "8f69307d-1126-5efe-967f-79feb07a8eb8",
+    "slug": "2000-3000",
+    "label": {
+      "en": "2.0L – 3.0L"
+    },
+    "unit": "cc",
+    "min_cc": 2000,
+    "max_cc": 3000,
+    "sort_order": 3
+  },
+  {
+    "id": "8a8823fb-6f43-5efd-af07-8189ebd33e14",
+    "slug": "3000-plus",
+    "label": {
+      "en": "3.0L and above"
+    },
+    "unit": "cc",
+    "min_cc": 3000,
+    "max_cc": null,
+    "sort_order": 4
+  }
+]

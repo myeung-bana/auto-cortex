@@ -1,0 +1,197 @@
+[
+  {
+    "id": "538b488a-a158-5f25-a449-07a06d39724d",
+    "business_space_id": null,
+    "slug": "audi",
+    "name": {
+      "en": "Audi",
+      "zh-Hant": "奧迪"
+    },
+    "country": "Germany",
+    "logo_url": "https://placehold.co/200x200/png?text=Audi",
+    "sort_order": 0,
+    "is_active": true
+  },
+  {
+    "id": "bfa73942-5868-5308-ba86-e3ccfd469df7",
+    "business_space_id": null,
+    "slug": "bmw",
+    "name": {
+      "en": "BMW",
+      "zh-Hant": "寶馬"
+    },
+    "country": "Germany",
+    "logo_url": "https://placehold.co/200x200/png?text=BMW",
+    "sort_order": 1,
+    "is_active": true
+  },
+  {
+    "id": "089d0b46-e3ba-5e2c-a6dd-a548605b5e66",
+    "business_space_id": null,
+    "slug": "mercedes-benz",
+    "name": {
+      "en": "Mercedes-Benz",
+      "zh-Hant": "平治"
+    },
+    "country": "Germany",
+    "logo_url": "https://placehold.co/200x200/png?text=Mercedes-Benz",
+    "sort_order": 2,
+    "is_active": true
+  },
+  {
+    "id": "37d29428-cce1-5dad-8630-a8a55215bab5",
+    "business_space_id": null,
+    "slug": "porsche",
+    "name": {
+      "en": "Porsche",
+      "zh-Hant": "保時捷"
+    },
+    "country": "Germany",
+    "logo_url": "https://placehold.co/200x200/png?text=Porsche",
+    "sort_order": 3,
+    "is_active": true
+  },
+  {
+    "id": "5d26bb2a-02cf-5bc5-8274-85add9ba1873",
+    "business_space_id": null,
+    "slug": "volkswagen",
+    "name": {
+      "en": "Volkswagen",
+      "zh-Hant": "福斯"
+    },
+    "country": "Germany",
+    "logo_url": "https://placehold.co/200x200/png?text=Volkswagen",
+    "sort_order": 4,
+    "is_active": true
+  },
+  {
+    "id": "bdb09a7f-45b1-5afa-9fa9-778665f3ebdd",
+    "business_space_id": null,
+    "slug": "toyota",
+    "name": {
+      "en": "Toyota",
+      "zh-Hant": "豐田"
+    },
+    "country": "Japan",
+    "logo_url": "https://placehold.co/200x200/png?text=Toyota",
+    "sort_order": 5,
+    "is_active": true
+  },
+  {
+    "id": "2e715a47-12c5-524d-8794-1d94016c825e",
+    "business_space_id": null,
+    "slug": "honda",
+    "name": {
+      "en": "Honda",
+      "zh-Hant": "本田"
+    },
+    "country": "Japan",
+    "logo_url": "https://placehold.co/200x200/png?text=Honda",
+    "sort_order": 6,
+    "is_active": true
+  },
+  {
+    "id": "ba5766ae-4045-5d7b-8b99-aa73c7110eb8",
+    "business_space_id": null,
+    "slug": "nissan",
+    "name": {
+      "en": "Nissan",
+      "zh-Hant": "日產"
+    },
+    "country": "Japan",
+    "logo_url": "https://placehold.co/200x200/png?text=Nissan",
+    "sort_order": 7,
+    "is_active": true
+  },
+  {
+    "id": "dbec3f8b-9d56-5076-a2b0-53419586de5a",
+    "business_space_id": null,
+    "slug": "mazda",
+    "name": {
+      "en": "Mazda",
+      "zh-Hant": "馬自達"
+    },
+    "country": "Japan",
+    "logo_url": "https://placehold.co/200x200/png?text=Mazda",
+    "sort_order": 8,
+    "is_active": true
+  },
+  {
+    "id": "92ba26df-a4e9-5282-b585-c52f79b41ba5",
+    "business_space_id": null,
+    "slug": "lexus",
+    "name": {
+      "en": "Lexus",
+      "zh-Hant": "凌志"
+    },
+    "country": "Japan",
+    "logo_url": "https://placehold.co/200x200/png?text=Lexus",
+    "sort_order": 9,
+    "is_active": true
+  },
+  {
+    "id": "1fb6dfc9-3eb0-5a18-8c68-9f47267837fe",
+    "business_space_id": null,
+    "slug": "tesla",
+    "name": {
+      "en": "Tesla",
+      "zh-Hant": "特斯拉"
+    },
+    "country": "United States",
+    "logo_url": "https://placehold.co/200x200/png?text=Tesla",
+    "sort_order": 10,
+    "is_active": true
+  },
+  {
+    "id": "21ea07ce-0965-504f-962c-0ed09d8150aa",
+    "business_space_id": null,
+    "slug": "smart",
+    "name": {
+      "en": "smart",
+      "zh-Hant": "smart"
+    },
+    "country": "Germany/China",
+    "logo_url": "https://placehold.co/200x200/png?text=smart",
+    "sort_order": 11,
+    "is_active": true
+  },
+  {
+    "id": "d649fcf0-2dc1-5fe5-bc00-6edbf172d1fd",
+    "business_space_id": null,
+    "slug": "volvo",
+    "name": {
+      "en": "Volvo",
+      "zh-Hant": "富豪"
+    },
+    "country": "Sweden",
+    "logo_url": "https://placehold.co/200x200/png?text=Volvo",
+    "sort_order": 12,
+    "is_active": true
+  },
+  {
+    "id": "57c32d36-7cfb-56dc-ac19-e5270a65857c",
+    "business_space_id": null,
+    "slug": "mini",
+    "name": {
+      "en": "MINI",
+      "zh-Hant": "MINI"
+    },
+    "country": "United Kingdom",
+    "logo_url": "https://placehold.co/200x200/png?text=MINI",
+    "sort_order": 13,
+    "is_active": true
+  },
+  {
+    "id": "d4a887f1-d706-5fea-b92c-54d02533f416",
+    "business_space_id": null,
+    "slug": "land-rover",
+    "name": {
+      "en": "Land Rover",
+      "zh-Hant": "路虎"
+    },
+    "country": "United Kingdom",
+    "logo_url": "https://placehold.co/200x200/png?text=Land+Rover",
+    "sort_order": 14,
+    "is_active": true
+  }
+]

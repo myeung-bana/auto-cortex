@@ -44,25 +44,49 @@ export interface Client {
   updatedAt: string
 }
 
+export interface ListingImage {
+  position: number
+  isCover: boolean
+  storageFileId: string | null
+  sourceUrl: string
+}
+
+export interface ListingMoney {
+  amount: number
+  currency: string
+}
+
+export interface ListingMileage {
+  value: number
+  unit: string
+}
+
 export interface Listing {
   id: string
   businessSpaceId: string
+  slug: string
   title: string
   make: string
   model: string
+  variant: string | null
   year: number
-  vin: string | null
-  colour: string | null
-  mileage: number | null
-  fuelType: FuelType | null
-  transmission: Transmission | null
-  condition: VehicleCondition | null
-  price: number | null
-  status: ListingStatus
+  bodyType: string | null
+  transmission: string | null
+  fuelType: string | null
+  exteriorColor: string | null
+  interiorColor: string | null
+  price: ListingMoney | null
+  mileage: ListingMileage | null
+  engineCc: number | null
+  seats: number | null
+  doors: number | null
+  features: string[]
+  images: ListingImage[]
   description: string | null
-  images: string[]
-  isArchived: boolean
+  status: ListingStatus
+  vin: string | null
   clientId: string | null
+  isArchived: boolean
   createdById: string | null
   createdAt: string
   updatedAt: string

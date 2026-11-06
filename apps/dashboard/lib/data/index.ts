@@ -1,13 +1,11 @@
+import "server-only"
+import { isMockMode } from "../config"
 import { mockProvider } from "./mock-provider"
+import { nhostProvider } from "./nhost-provider"
 import type { DataProvider } from "./types"
 
 export function getDataProvider(): DataProvider {
-  if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === "true") {
-    return mockProvider
-  }
-  throw new Error(
-    "GraphQL provider not configured. Set NEXT_PUBLIC_USE_MOCK_DATA=true for prototype mode."
-  )
+  return isMockMode() ? mockProvider : nhostProvider
 }
 
 export type { DataProvider, DashboardStats, ClientFilters, ListingFilters } from "./types"

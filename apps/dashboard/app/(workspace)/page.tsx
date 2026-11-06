@@ -18,7 +18,7 @@ import {
   Users,
 } from "lucide-react"
 import { getDataProvider } from "@/lib/data"
-import { getSessionUser } from "@/lib/session/mock-session"
+import { getSessionUser } from "@/lib/session"
 import { ROUTES } from "@/lib/constants/routes"
 import { formatCurrency, formatRelativeTime } from "@autocore/utils"
 import { RecentActivity } from "@/components/dashboard/recent-activity"
@@ -129,8 +129,8 @@ export default async function DashboardPage() {
           />
           {user.role === "BUSINESS_OWNER" && (
             <QuickLink
-              href={ROUTES.settingsUsers}
-              label="Manage team"
+              href={ROUTES.userManagement}
+              label="User management"
               count={stats.seatsUsed}
             />
           )}

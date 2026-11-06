@@ -1,0 +1,340 @@
+[
+  {
+    "id": "1c870698-20b3-5140-b5da-f9ae5ea823f9",
+    "business_space_id": null,
+    "slug": "abs",
+    "name": {
+      "en": "ABS",
+      "zh-Hant": "防鎖死煞車系統"
+    },
+    "category": "safety",
+    "icon": "abs",
+    "sort_order": 0,
+    "is_active": true
+  },
+  {
+    "id": "870d2cbf-a599-5bfc-9217-bb9d8a8a1c09",
+    "business_space_id": null,
+    "slug": "airbags",
+    "name": {
+      "en": "Airbags",
+      "zh-Hant": "安全氣袋"
+    },
+    "category": "safety",
+    "icon": "airbags",
+    "sort_order": 1,
+    "is_active": true
+  },
+  {
+    "id": "17ea2bcd-c7ea-57ae-bfcb-0eae81f24257",
+    "business_space_id": null,
+    "slug": "reverse-camera",
+    "name": {
+      "en": "Reverse Camera",
+      "zh-Hant": "倒車影像"
+    },
+    "category": "safety",
+    "icon": "reverse-camera",
+    "sort_order": 2,
+    "is_active": true
+  },
+  {
+    "id": "c687fb7c-5e15-51cd-9220-e23182f6a614",
+    "business_space_id": null,
+    "slug": "360-camera",
+    "name": {
+      "en": "360° Camera",
+      "zh-Hant": "360度影像"
+    },
+    "category": "safety",
+    "icon": "360-camera",
+    "sort_order": 3,
+    "is_active": true
+  },
+  {
+    "id": "80106fc6-48f7-5d1a-b249-9908a739900d",
+    "business_space_id": null,
+    "slug": "parking-sensors",
+    "name": {
+      "en": "Parking Sensors",
+      "zh-Hant": "泊車感應器"
+    },
+    "category": "safety",
+    "icon": "parking-sensors",
+    "sort_order": 4,
+    "is_active": true
+  },
+  {
+    "id": "8894e467-6dcd-5038-afb5-3240e6753399",
+    "business_space_id": null,
+    "slug": "lane-assist",
+    "name": {
+      "en": "Lane Assist",
+      "zh-Hant": "車道輔助"
+    },
+    "category": "safety",
+    "icon": "lane-assist",
+    "sort_order": 5,
+    "is_active": true
+  },
+  {
+    "id": "fd460472-4e30-513f-8233-d90cb109c937",
+    "business_space_id": null,
+    "slug": "blind-spot-monitor",
+    "name": {
+      "en": "Blind Spot Monitor",
+      "zh-Hant": "盲點偵測"
+    },
+    "category": "safety",
+    "icon": "blind-spot-monitor",
+    "sort_order": 6,
+    "is_active": true
+  },
+  {
+    "id": "dd24a283-f515-5516-94b8-d2a5def2bea0",
+    "business_space_id": null,
+    "slug": "cruise-control",
+    "name": {
+      "en": "Cruise Control",
+      "zh-Hant": "定速巡航"
+    },
+    "category": "comfort",
+    "icon": "cruise-control",
+    "sort_order": 7,
+    "is_active": true
+  },
+  {
+    "id": "13bd1dcc-92b4-51fe-b461-c38e5d6a9334",
+    "business_space_id": null,
+    "slug": "adaptive-cruise-control",
+    "name": {
+      "en": "Adaptive Cruise Control",
+      "zh-Hant": "自適應巡航"
+    },
+    "category": "comfort",
+    "icon": "adaptive-cruise-control",
+    "sort_order": 8,
+    "is_active": true
+  },
+  {
+    "id": "d4f87912-0b57-59e3-a7ca-ee5fa4e6adaf",
+    "business_space_id": null,
+    "slug": "leather-seats",
+    "name": {
+      "en": "Leather Seats",
+      "zh-Hant": "真皮座椅"
+    },
+    "category": "comfort",
+    "icon": "leather-seats",
+    "sort_order": 9,
+    "is_active": true
+  },
+  {
+    "id": "8610b97a-a212-5fa8-aab9-73df4ec6d913",
+    "business_space_id": null,
+    "slug": "heated-seats",
+    "name": {
+      "en": "Heated Seats",
+      "zh-Hant": "座椅加熱"
+    },
+    "category": "comfort",
+    "icon": "heated-seats",
+    "sort_order": 10,
+    "is_active": true
+  },
+  {
+    "id": "b07e30b4-6566-5137-b0e2-91d75e02aa92",
+    "business_space_id": null,
+    "slug": "ventilated-seats",
+    "name": {
+      "en": "Ventilated Seats",
+      "zh-Hant": "座椅通風"
+    },
+    "category": "comfort",
+    "icon": "ventilated-seats",
+    "sort_order": 11,
+    "is_active": true
+  },
+  {
+    "id": "78716a8a-51ec-5489-a3d5-fe71fe9eabc3",
+    "business_space_id": null,
+    "slug": "keyless-entry",
+    "name": {
+      "en": "Keyless Entry",
+      "zh-Hant": "免鑰匙進入"
+    },
+    "category": "comfort",
+    "icon": "keyless-entry",
+    "sort_order": 12,
+    "is_active": true
+  },
+  {
+    "id": "9796a430-cf86-59b9-bb6b-22999b3f96fb",
+    "business_space_id": null,
+    "slug": "push-start",
+    "name": {
+      "en": "Push Start",
+      "zh-Hant": "一鍵啟動"
+    },
+    "category": "comfort",
+    "icon": "push-start",
+    "sort_order": 13,
+    "is_active": true
+  },
+  {
+    "id": "e1ffacac-eeb6-5c7f-b009-a5a02f5f8e05",
+    "business_space_id": null,
+    "slug": "third-row-seats",
+    "name": {
+      "en": "Third Row Seats",
+      "zh-Hant": "三排座椅"
+    },
+    "category": "comfort",
+    "icon": "third-row-seats",
+    "sort_order": 14,
+    "is_active": true
+  },
+  {
+    "id": "970061e9-af4f-5bff-8475-e105fb678ffb",
+    "business_space_id": null,
+    "slug": "power-sliding-doors",
+    "name": {
+      "en": "Power Sliding Doors",
+      "zh-Hant": "電動趟門"
+    },
+    "category": "comfort",
+    "icon": "power-sliding-doors",
+    "sort_order": 15,
+    "is_active": true
+  },
+  {
+    "id": "dd12e1bb-9a94-5985-b11a-b299236e5df4",
+    "business_space_id": null,
+    "slug": "navigation",
+    "name": {
+      "en": "Navigation",
+      "zh-Hant": "衛星導航"
+    },
+    "category": "technology",
+    "icon": "navigation",
+    "sort_order": 16,
+    "is_active": true
+  },
+  {
+    "id": "88b4a193-9b94-5272-8ced-ad318120fd05",
+    "business_space_id": null,
+    "slug": "bluetooth",
+    "name": {
+      "en": "Bluetooth",
+      "zh-Hant": "藍牙"
+    },
+    "category": "technology",
+    "icon": "bluetooth",
+    "sort_order": 17,
+    "is_active": true
+  },
+  {
+    "id": "e8e04805-fa52-59e5-9cd2-080dd2ead834",
+    "business_space_id": null,
+    "slug": "apple-carplay",
+    "name": {
+      "en": "Apple CarPlay",
+      "zh-Hant": "Apple CarPlay"
+    },
+    "category": "technology",
+    "icon": "apple-carplay",
+    "sort_order": 18,
+    "is_active": true
+  },
+  {
+    "id": "6c27a5e7-5c02-59d8-a0d9-89679965a86f",
+    "business_space_id": null,
+    "slug": "android-auto",
+    "name": {
+      "en": "Android Auto",
+      "zh-Hant": "Android Auto"
+    },
+    "category": "technology",
+    "icon": "android-auto",
+    "sort_order": 19,
+    "is_active": true
+  },
+  {
+    "id": "42806236-bb48-5e5a-a049-07d1e778a928",
+    "business_space_id": null,
+    "slug": "autopilot",
+    "name": {
+      "en": "Autopilot",
+      "zh-Hant": "Autopilot 輔助駕駛"
+    },
+    "category": "technology",
+    "icon": "autopilot",
+    "sort_order": 20,
+    "is_active": true
+  },
+  {
+    "id": "490be79f-5503-5009-8799-28d655a96461",
+    "business_space_id": null,
+    "slug": "sunroof",
+    "name": {
+      "en": "Sunroof",
+      "zh-Hant": "天窗"
+    },
+    "category": "exterior",
+    "icon": "sunroof",
+    "sort_order": 21,
+    "is_active": true
+  },
+  {
+    "id": "4c88e4a0-f6f9-5040-9657-eb53da5b2584",
+    "business_space_id": null,
+    "slug": "panoramic-roof",
+    "name": {
+      "en": "Panoramic Roof",
+      "zh-Hant": "全景天窗"
+    },
+    "category": "exterior",
+    "icon": "panoramic-roof",
+    "sort_order": 22,
+    "is_active": true
+  },
+  {
+    "id": "6ad0d9d4-32c3-50c7-8a0b-89d5d5291ff0",
+    "business_space_id": null,
+    "slug": "led-headlights",
+    "name": {
+      "en": "LED Headlights",
+      "zh-Hant": "LED大燈"
+    },
+    "category": "exterior",
+    "icon": "led-headlights",
+    "sort_order": 23,
+    "is_active": true
+  },
+  {
+    "id": "f4ade130-7abb-5bc7-93d9-5593dd20aec0",
+    "business_space_id": null,
+    "slug": "alloy-wheels",
+    "name": {
+      "en": "Alloy Wheels",
+      "zh-Hant": "鋁合金輪圈"
+    },
+    "category": "exterior",
+    "icon": "alloy-wheels",
+    "sort_order": 24,
+    "is_active": true
+  },
+  {
+    "id": "af051a54-366a-53a6-8a62-9bb68df329d0",
+    "business_space_id": null,
+    "slug": "power-tailgate",
+    "name": {
+      "en": "Power Tailgate",
+      "zh-Hant": "電動尾門"
+    },
+    "category": "exterior",
+    "icon": "power-tailgate",
+    "sort_order": 25,
+    "is_active": true
+  }
+]

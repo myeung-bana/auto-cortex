@@ -8,54 +8,34 @@ import type {
   ListingStatus,
   User,
 } from "@autocore/utils"
-import {
-  ACTIVITY_EVENTS,
-  BUSINESS_SPACES,
-  CLIENTS,
-  LISTINGS,
-  USERS,
-} from "../mock/seed"
 import type {
   ClientFilters,
   DashboardStats,
   DataProvider,
   ListingFilters,
 } from "./types"
-
-function clone<T>(value: T): T {
-  return structuredClone(value)
-}
-
-function generateId(prefix: string): string {
-  return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
-}
+import {
+  countSeatsUsed,
+  generateId,
+  getMemoryStore,
+  type MemoryStore,
+} from "./memory-store"
 
 function matchesSearch(value: string | null | undefined, search: string): boolean {
   if (!value) return false
   return value.toLowerCase().includes(search.toLowerCase())
 }
 
-class MockDataStore {
-  businessSpaces = clone(BUSINESS_SPACES)
-  users = clone(USERS)
-  clients = clone(CLIENTS)
-  listings = clone(LISTINGS)
-  activityEvents = clone(ACTIVITY_EVENTS)
-}
-
-const globalStore = globalThis as typeof globalThis & {
-  __autocoreMockStore?: MockDataStore
-}
-
-function getStore(): MockDataStore {
-  if (!globalStore.__autocoreMockStore) {
-    globalStore.__autocoreMockStore = new MockDataStore()
-  }
-  return globalStore.__autocoreMockStore
+function slugify(value: string): string {
+  return value
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "")
 }
 
 function addActivity(
-  store: MockDataStore,
+  store: MemoryStore,
   businessSpaceId: string,
   type: ActivityEvent["type"],
   description: string
@@ -71,19 +51,21 @@ function addActivity(
 
 export const mockProvider: DataProvider = {
   async getBusinessSpace(businessSpaceId) {
-    const store = getStore()
-    return store.businessSpaces.find((s) => s.id === businessSpaceId) ?? null
+    const store = getMemoryStore()
+    const space = store.businessSpaces.find((s) => s.id === businessSpaceId)
+    if (!space) return null
+    return { ...space, seatsUsed: countSeatsUsed(store, space.id) }
   },
 
   async getUsers(businessSpaceId) {
-    const store = getStore()
+    const store = getMemoryStore()
     return store.users.filter(
       (u) => u.businessSpaceId === businessSpaceId && u.isActive
     )
   },
 
   async getClients(businessSpaceId, filters = {}) {
-    const store = getStore()
+    const store = getMemoryStore()
     let results = store.clients.filter(
       (c) =>
         c.businessSpaceId === businessSpaceId &&
@@ -107,7 +89,7 @@ export const mockProvider: DataProvider = {
   },
 
   async getClient(businessSpaceId, clientId) {
-    const store = getStore()
+    const store = getMemoryStore()
     return (
       store.clients.find(
         (c) => c.businessSpaceId === businessSpaceId && c.id === clientId
@@ -116,7 +98,7 @@ export const mockProvider: DataProvider = {
   },
 
   async createClient(businessSpaceId, userId, input) {
-    const store = getStore()
+    const store = getMemoryStore()
     const now = new Date().toISOString()
     const client: Client = {
       id: generateId("client"),
@@ -142,7 +124,7 @@ export const mockProvider: DataProvider = {
   },
 
   async updateClient(businessSpaceId, clientId, input) {
-    const store = getStore()
+    const store = getMemoryStore()
     const index = store.clients.findIndex(
       (c) => c.businessSpaceId === businessSpaceId && c.id === clientId
     )
@@ -164,7 +146,7 @@ export const mockProvider: DataProvider = {
   },
 
   async archiveClient(businessSpaceId, clientId) {
-    const store = getStore()
+    const store = getMemoryStore()
     const client = store.clients.find(
       (c) => c.businessSpaceId === businessSpaceId && c.id === clientId
     )
@@ -175,7 +157,7 @@ export const mockProvider: DataProvider = {
   },
 
   async getListings(businessSpaceId, filters = {}) {
-    const store = getStore()
+    const store = getMemoryStore()
     let results = store.listings.filter(
       (l) =>
         l.businessSpaceId === businessSpaceId &&
@@ -203,7 +185,7 @@ export const mockProvider: DataProvider = {
   },
 
   async getListing(businessSpaceId, listingId) {
-    const store = getStore()
+    const store = getMemoryStore()
     return (
       store.listings.find(
         (l) => l.businessSpaceId === businessSpaceId && l.id === listingId
@@ -212,27 +194,40 @@ export const mockProvider: DataProvider = {
   },
 
   async createListing(businessSpaceId, userId, input) {
-    const store = getStore()
+    const store = getMemoryStore()
     const now = new Date().toISOString()
     const listing: Listing = {
       id: generateId("listing"),
       businessSpaceId,
+      slug: slugify(input.title) || generateId("listing"),
       title: input.title,
       make: input.make,
       model: input.model,
+      variant: input.variant || null,
       year: input.year,
-      vin: input.vin || null,
-      colour: input.colour || null,
-      mileage: input.mileage ?? null,
-      fuelType: input.fuelType ?? null,
-      transmission: input.transmission ?? null,
-      condition: input.condition ?? null,
-      price: input.price ?? null,
-      status: input.status ?? "AVAILABLE",
-      description: input.description || null,
+      bodyType: input.bodyType || null,
+      transmission: input.transmission || null,
+      fuelType: input.fuelType || null,
+      exteriorColor: input.exteriorColor || null,
+      interiorColor: input.interiorColor || null,
+      price:
+        input.price != null
+          ? { amount: input.price, currency: "HKD" }
+          : null,
+      mileage:
+        input.mileage != null
+          ? { value: input.mileage, unit: "km" }
+          : null,
+      engineCc: input.engineCc ?? null,
+      seats: input.seats ?? null,
+      doors: input.doors ?? null,
+      features: input.features ?? [],
       images: [],
+      description: input.description || null,
+      status: input.status ?? "AVAILABLE",
+      vin: input.vin || null,
+      clientId: null,
       isArchived: false,
-      clientId: input.clientId || null,
       createdById: userId,
       createdAt: now,
       updatedAt: now,
@@ -248,7 +243,7 @@ export const mockProvider: DataProvider = {
   },
 
   async updateListing(businessSpaceId, listingId, input) {
-    const store = getStore()
+    const store = getMemoryStore()
     const index = store.listings.findIndex(
       (l) => l.businessSpaceId === businessSpaceId && l.id === listingId
     )
@@ -259,26 +254,54 @@ export const mockProvider: DataProvider = {
     const updated: Listing = {
       ...existing,
       title: input.title ?? existing.title,
+      slug: input.title ? slugify(input.title) : existing.slug,
       make: input.make ?? existing.make,
       model: input.model ?? existing.model,
+      variant:
+        input.variant !== undefined ? input.variant || null : existing.variant,
       year: input.year ?? existing.year,
+      bodyType:
+        input.bodyType !== undefined
+          ? input.bodyType || null
+          : existing.bodyType,
+      transmission:
+        input.transmission !== undefined
+          ? input.transmission || null
+          : existing.transmission,
+      fuelType:
+        input.fuelType !== undefined
+          ? input.fuelType || null
+          : existing.fuelType,
+      exteriorColor:
+        input.exteriorColor !== undefined
+          ? input.exteriorColor || null
+          : existing.exteriorColor,
+      interiorColor:
+        input.interiorColor !== undefined
+          ? input.interiorColor || null
+          : existing.interiorColor,
+      price:
+        input.price !== undefined
+          ? input.price != null
+            ? { amount: input.price, currency: existing.price?.currency ?? "HKD" }
+            : null
+          : existing.price,
+      mileage:
+        input.mileage !== undefined
+          ? input.mileage != null
+            ? { value: input.mileage, unit: "km" }
+            : null
+          : existing.mileage,
+      engineCc: input.engineCc !== undefined ? input.engineCc ?? null : existing.engineCc,
+      seats: input.seats !== undefined ? input.seats ?? null : existing.seats,
+      doors: input.doors !== undefined ? input.doors ?? null : existing.doors,
+      features: input.features ?? existing.features,
       vin: input.vin !== undefined ? input.vin || null : existing.vin,
-      colour:
-        input.colour !== undefined ? input.colour || null : existing.colour,
-      mileage: input.mileage ?? existing.mileage,
-      fuelType: input.fuelType ?? existing.fuelType,
-      transmission: input.transmission ?? existing.transmission,
-      condition: input.condition ?? existing.condition,
-      price: input.price ?? existing.price,
       status: newStatus,
       description:
         input.description !== undefined
           ? input.description || null
           : existing.description,
-      clientId:
-        input.clientId !== undefined
-          ? input.clientId || null
-          : existing.clientId,
       updatedAt: new Date().toISOString(),
     }
 
@@ -295,8 +318,38 @@ export const mockProvider: DataProvider = {
     return updated
   },
 
+  async patchListing(businessSpaceId, listingId, patch) {
+    const store = getMemoryStore()
+    const listing = store.listings.find(
+      (item) => item.businessSpaceId === businessSpaceId && item.id === listingId
+    )
+    if (!listing) return null
+
+    if (patch.images !== undefined) listing.images = patch.images
+    if (patch.price !== undefined) listing.price = patch.price
+    if (patch.year !== undefined) listing.year = patch.year
+    if (patch.mileage !== undefined) {
+      listing.mileage =
+        patch.mileage == null
+          ? null
+          : { value: patch.mileage, unit: listing.mileage?.unit ?? "km" }
+    }
+    if (patch.transmission !== undefined) listing.transmission = patch.transmission
+    if (patch.make !== undefined) listing.make = patch.make
+    if (patch.bodyType !== undefined) listing.bodyType = patch.bodyType
+    if (patch.fuelType !== undefined) listing.fuelType = patch.fuelType
+    if (patch.engineCc !== undefined) listing.engineCc = patch.engineCc
+    if (patch.exteriorColor !== undefined) listing.exteriorColor = patch.exteriorColor
+    if (patch.interiorColor !== undefined) listing.interiorColor = patch.interiorColor
+    if (patch.seats !== undefined) listing.seats = patch.seats
+    if (patch.doors !== undefined) listing.doors = patch.doors
+    if (patch.features !== undefined) listing.features = patch.features
+    listing.updatedAt = new Date().toISOString()
+    return listing
+  },
+
   async archiveListing(businessSpaceId, listingId) {
-    const store = getStore()
+    const store = getMemoryStore()
     const listing = store.listings.find(
       (l) => l.businessSpaceId === businessSpaceId && l.id === listingId
     )
@@ -307,14 +360,14 @@ export const mockProvider: DataProvider = {
   },
 
   async getActivityEvents(businessSpaceId, limit = 10) {
-    const store = getStore()
+    const store = getMemoryStore()
     return store.activityEvents
       .filter((e) => e.businessSpaceId === businessSpaceId)
       .slice(0, limit)
   },
 
   async getDashboardStats(businessSpaceId) {
-    const store = getStore()
+    const store = getMemoryStore()
     const space =
       store.businessSpaces.find((s) => s.id === businessSpaceId) ?? null
     if (!space) {
@@ -349,7 +402,7 @@ export const mockProvider: DataProvider = {
       totalListings: listings.length,
       listingsByStatus,
       seatLimit: space.seatLimit,
-      seatsUsed: space.seatsUsed,
+      seatsUsed: countSeatsUsed(store, space.id),
     }
 
     if (space.nature === "SECOND_HAND_DEALER") {
@@ -369,7 +422,7 @@ export const mockProvider: DataProvider = {
       stats.availableFleet = listingsByStatus.AVAILABLE
       stats.revenueMtd = listings
         .filter((l) => l.status === "RENTED" && l.price)
-        .reduce((sum, l) => sum + (l.price ?? 0) * 15, 0)
+        .reduce((sum, l) => sum + (l.price?.amount ?? 0) * 15, 0)
     }
 
     return stats

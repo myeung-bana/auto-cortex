@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
-import { getSessionUser } from "@/lib/session/mock-session"
+import { getMasterSession, getSessionUser } from "@/lib/session"
 import { ROUTES } from "@/lib/constants/routes"
 
 export default async function AuthLayout({
@@ -9,6 +9,7 @@ export default async function AuthLayout({
 }) {
   const user = await getSessionUser()
   if (user) redirect(ROUTES.dashboard)
+  if (await getMasterSession()) redirect(ROUTES.masterConsole)
 
   return (
     <div className="bg-background flex min-h-screen items-center justify-center p-4">

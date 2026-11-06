@@ -1,0 +1,68 @@
+[
+  {
+    "id": "94ac0fa5-5446-5d0e-b8a7-0927968acf16",
+    "slug": "under-50k",
+    "label": {
+      "en": "Under HK$50,000"
+    },
+    "currency": "HKD",
+    "min": 0,
+    "max": 50000,
+    "sort_order": 0
+  },
+  {
+    "id": "22a60bca-49e8-55b8-9fc2-5bc8b9b2d704",
+    "slug": "50k-100k",
+    "label": {
+      "en": "HK$50,000 – 100,000"
+    },
+    "currency": "HKD",
+    "min": 50000,
+    "max": 100000,
+    "sort_order": 1
+  },
+  {
+    "id": "2701b7c8-29a7-5787-8204-1ffedfe0ad4c",
+    "slug": "100k-150k",
+    "label": {
+      "en": "HK$100,000 – 150,000"
+    },
+    "currency": "HKD",
+    "min": 100000,
+    "max": 150000,
+    "sort_order": 2
+  },
+  {
+    "id": "3326a45f-9c65-5523-b479-aba1b3fc6fc7",
+    "slug": "150k-250k",
+    "label": {
+      "en": "HK$150,000 – 250,000"
+    },
+    "currency": "HKD",
+    "min": 150000,
+    "max": 250000,
+    "sort_order": 3
+  },
+  {
+    "id": "350cccc0-5119-5e7d-a2e3-9947dfb3bd68",
+    "slug": "250k-400k",
+    "label": {
+      "en": "HK$250,000 – 400,000"
+    },
+    "currency": "HKD",
+    "min": 250000,
+    "max": 400000,
+    "sort_order": 4
+  },
+  {
+    "id": "b674f73d-3da9-528a-8087-9f2a36981b9f",
+    "slug": "400k-plus",
+    "label": {
+      "en": "HK$400,000 and above"
+    },
+    "currency": "HKD",
+    "min": 400000,
+    "max": null,
+    "sort_order": 5
+  }
+]

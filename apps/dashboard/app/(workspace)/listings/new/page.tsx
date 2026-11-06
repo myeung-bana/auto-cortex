@@ -2,17 +2,21 @@ import Link from "next/link"
 import { Button, Card, CardContent, CardHeader, CardTitle, PageHeader } from "@autocore/ui"
 import { ArrowLeft } from "lucide-react"
 import { getDataProvider } from "@/lib/data"
-import { getSessionUser } from "@/lib/session/mock-session"
+import { getSessionUser } from "@/lib/session"
 import { ROUTES } from "@/lib/constants/routes"
 import { ListingForm } from "@/components/listings/listing-form"
 import { createListingAction } from "@/lib/actions/listings"
+import { getListingFormOptions } from "@/lib/taxonomies/provider"
 
 export default async function NewListingPage() {
   const user = await getSessionUser()
   if (!user) return null
 
   const provider = getDataProvider()
-  const businessSpace = await provider.getBusinessSpace(user.businessSpaceId)
+  const [businessSpace, options] = await Promise.all([
+    provider.getBusinessSpace(user.businessSpaceId),
+    getListingFormOptions(),
+  ])
   if (!businessSpace) return null
 
   return (
@@ -30,13 +34,14 @@ export default async function NewListingPage() {
         }
       />
 
-      <Card className="max-w-2xl">
+      <Card className="max-w-3xl">
         <CardHeader>
           <CardTitle>Listing Details</CardTitle>
         </CardHeader>
         <CardContent>
           <ListingForm
             nature={businessSpace.nature}
+            options={options}
             onSubmit={createListingAction}
             submitLabel="Create Listing"
           />

@@ -12,9 +12,11 @@ export function formatCurrency(
 
 export function formatPriceLabel(
   nature: "SECOND_HAND_DEALER" | "LUXURY_CAR_RENTAL",
-  amount: number | null | undefined
+  price: number | { amount: number; currency?: string } | null | undefined
 ): string {
-  if (amount == null) return "—"
-  const formatted = formatCurrency(amount)
+  if (price == null) return "—"
+  const amount = typeof price === "number" ? price : price.amount
+  const currency = typeof price === "number" ? "HKD" : price.currency ?? "HKD"
+  const formatted = formatCurrency(amount, currency)
   return nature === "LUXURY_CAR_RENTAL" ? `${formatted}/day` : formatted
 }

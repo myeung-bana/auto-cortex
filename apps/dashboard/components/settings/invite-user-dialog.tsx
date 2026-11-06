@@ -14,6 +14,8 @@ import {
 } from "@autocore/ui"
 import { UserPlus } from "lucide-react"
 import { toast } from "sonner"
+import { inviteUserAction } from "@/lib/actions/users"
+import { isMockMode } from "@/lib/config"
 
 interface InviteUserDialogProps {
   seatsUsed: number
@@ -25,16 +27,36 @@ export function InviteUserDialog({
   seatLimit,
 }: InviteUserDialogProps) {
   const [open, setOpen] = useState(false)
+  const [pending, setPending] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const atLimit = seatsUsed >= seatLimit
 
-  function handleInvite(e: React.FormEvent) {
+  async function handleInvite(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    toast.info("User invitations will be available when connected to the backend.")
+    const form = new FormData(e.currentTarget)
+    setPending(true)
+    setError(null)
+    const result = await inviteUserAction({
+      email: String(form.get("email") ?? ""),
+      displayName: String(form.get("displayName") ?? ""),
+    })
+    setPending(false)
+    if (result.error) {
+      setError(result.error)
+      return
+    }
+    if (result.notice) toast.info(result.notice)
     setOpen(false)
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(next) => {
+        setOpen(next)
+        setError(null)
+      }}
+    >
       <DialogTrigger asChild>
         <Button disabled={atLimit}>
           <UserPlus className="h-4 w-4" />
@@ -56,6 +78,7 @@ export function InviteUserDialog({
               <Label htmlFor="email">Email address</Label>
               <Input
                 id="email"
+                name="email"
                 type="email"
                 placeholder="colleague@company.com"
                 required
@@ -63,14 +86,23 @@ export function InviteUserDialog({
             </div>
             <div className="space-y-2">
               <Label htmlFor="name">Display name</Label>
-              <Input id="name" placeholder="Jane Smith" required />
+              <Input
+                id="name"
+                name="displayName"
+                placeholder="Jane Smith"
+                minLength={2}
+                required
+              />
             </div>
-            <Button type="submit" className="w-full">
-              Send Invitation
+            {error && <p className="text-destructive text-sm">{error}</p>}
+            <Button type="submit" className="w-full" disabled={pending}>
+              {pending ? "Sending…" : "Send Invitation"}
             </Button>
-            <p className="text-muted-foreground text-center text-xs">
-              Prototype mode — invitation is UI only
-            </p>
+            {isMockMode() && (
+              <p className="text-muted-foreground text-center text-xs">
+                Prototype mode — invitation is UI only
+              </p>
+            )}
           </form>
         )}
       </DialogContent>

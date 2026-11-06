@@ -13,6 +13,7 @@ import {
 } from "@autocore/ui"
 import { LogOut, RefreshCw } from "lucide-react"
 import { signOut, switchBusinessSpace } from "@/lib/actions/auth"
+import { isMockMode } from "@/lib/config"
 import { MOCK_LOGIN_OPTIONS } from "@/lib/mock/fixtures/users"
 import type { BusinessSpace, User } from "@autocore/utils"
 import { USER_ROLE_LABELS } from "@autocore/utils"
@@ -30,7 +31,9 @@ export function UserMenu({ user, businessSpace }: UserMenuProps) {
     .slice(0, 2)
     .toUpperCase()
 
-  const otherSpaces = MOCK_LOGIN_OPTIONS.filter((o) => o.id !== user.id)
+  const otherSpaces = isMockMode()
+    ? MOCK_LOGIN_OPTIONS.filter((o) => o.id !== user.id)
+    : []
 
   return (
     <DropdownMenu>
@@ -62,19 +65,23 @@ export function UserMenu({ user, businessSpace }: UserMenuProps) {
             </p>
           </div>
         </DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuLabel className="text-muted-foreground text-xs font-normal">
-          Switch demo space
-        </DropdownMenuLabel>
-        {otherSpaces.map((option) => (
-          <DropdownMenuItem
-            key={option.id}
-            onClick={() => switchBusinessSpace(option.id)}
-          >
-            <RefreshCw className="mr-2 h-4 w-4" />
-            {option.label}
-          </DropdownMenuItem>
-        ))}
+        {otherSpaces.length > 0 && (
+          <>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel className="text-muted-foreground text-xs font-normal">
+              Switch demo space
+            </DropdownMenuLabel>
+            {otherSpaces.map((option) => (
+              <DropdownMenuItem
+                key={option.id}
+                onClick={() => switchBusinessSpace(option.id)}
+              >
+                <RefreshCw className="mr-2 h-4 w-4" />
+                {option.label}
+              </DropdownMenuItem>
+            ))}
+          </>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut()}>
           <LogOut className="mr-2 h-4 w-4" />

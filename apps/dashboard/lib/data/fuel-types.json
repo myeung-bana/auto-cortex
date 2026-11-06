@@ -1,0 +1,67 @@
+[
+  {
+    "id": "232b0056-5bca-5cd6-9a1b-deb1e755619b",
+    "business_space_id": null,
+    "slug": "petrol",
+    "name": {
+      "en": "Petrol",
+      "zh-Hant": "汽油"
+    },
+    "is_electric": false,
+    "requires_engine_size": true,
+    "sort_order": 0,
+    "is_active": true
+  },
+  {
+    "id": "789edd6d-adeb-5dc7-98f0-3237b4e335e8",
+    "business_space_id": null,
+    "slug": "diesel",
+    "name": {
+      "en": "Diesel",
+      "zh-Hant": "柴油"
+    },
+    "is_electric": false,
+    "requires_engine_size": true,
+    "sort_order": 1,
+    "is_active": true
+  },
+  {
+    "id": "18bcfa7a-f2bd-5c7e-a47f-b1f6c47f415e",
+    "business_space_id": null,
+    "slug": "electric",
+    "name": {
+      "en": "Electric",
+      "zh-Hant": "電動"
+    },
+    "is_electric": true,
+    "requires_engine_size": false,
+    "sort_order": 2,
+    "is_active": true
+  },
+  {
+    "id": "7318b5b7-5cf2-5da3-b7cb-453b239d3989",
+    "business_space_id": null,
+    "slug": "hybrid",
+    "name": {
+      "en": "Hybrid",
+      "zh-Hant": "油電混合"
+    },
+    "is_electric": false,
+    "requires_engine_size": true,
+    "sort_order": 3,
+    "is_active": true
+  },
+  {
+    "id": "a07ae1b1-a96e-5cce-b4de-cf536adb43f3",
+    "business_space_id": null,
+    "slug": "plug-in-hybrid",
+    "name": {
+      "en": "Plug-in Hybrid",
+      "zh-Hant": "插電式混合"
+    },
+    "is_electric": false,
+    "requires_engine_size": true,
+    "sort_order": 4,
+    "is_active": true
+  }
+]

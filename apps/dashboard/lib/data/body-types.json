@@ -1,0 +1,110 @@
+[
+  {
+    "id": "4b3ca489-9b1d-5f20-9479-90201f5cc189",
+    "business_space_id": null,
+    "slug": "sedan",
+    "name": {
+      "en": "Sedan",
+      "zh-Hant": "房車"
+    },
+    "icon": "car-sedan",
+    "sort_order": 0,
+    "is_active": true
+  },
+  {
+    "id": "739dce12-7302-5928-8bc3-06145dcb4bee",
+    "business_space_id": null,
+    "slug": "hatchback",
+    "name": {
+      "en": "Hatchback",
+      "zh-Hant": "掀背車"
+    },
+    "icon": "car-hatchback",
+    "sort_order": 1,
+    "is_active": true
+  },
+  {
+    "id": "f09364ae-898f-5948-85c8-c02819e568f8",
+    "business_space_id": null,
+    "slug": "suv",
+    "name": {
+      "en": "SUV",
+      "zh-Hant": "SUV"
+    },
+    "icon": "car-suv",
+    "sort_order": 2,
+    "is_active": true
+  },
+  {
+    "id": "89e506ff-0e21-5122-9fbb-afed3e6299f1",
+    "business_space_id": null,
+    "slug": "wagon",
+    "name": {
+      "en": "Wagon",
+      "zh-Hant": "旅行車"
+    },
+    "icon": "car-wagon",
+    "sort_order": 3,
+    "is_active": true
+  },
+  {
+    "id": "533004c1-f113-5648-a79a-fee7cda8c8f7",
+    "business_space_id": null,
+    "slug": "mpv",
+    "name": {
+      "en": "MPV",
+      "zh-Hant": "七人車 / MPV"
+    },
+    "icon": "car-mpv",
+    "sort_order": 4,
+    "is_active": true
+  },
+  {
+    "id": "6b83a19b-95e7-5b78-b364-15e40c6a7eda",
+    "business_space_id": null,
+    "slug": "coupe",
+    "name": {
+      "en": "Coupe",
+      "zh-Hant": "轎跑車"
+    },
+    "icon": "car-coupe",
+    "sort_order": 5,
+    "is_active": true
+  },
+  {
+    "id": "6f6c52ab-a098-5933-9135-f329cdcad4ef",
+    "business_space_id": null,
+    "slug": "convertible",
+    "name": {
+      "en": "Convertible",
+      "zh-Hant": "敞篷跑車"
+    },
+    "icon": "car-convertible",
+    "sort_order": 6,
+    "is_active": true
+  },
+  {
+    "id": "ee45b8fa-4481-50c7-96c3-6d6c68487afb",
+    "business_space_id": null,
+    "slug": "pickup",
+    "name": {
+      "en": "Pickup",
+      "zh-Hant": "客貨車"
+    },
+    "icon": "car-pickup",
+    "sort_order": 7,
+    "is_active": true
+  },
+  {
+    "id": "260cebbe-c5f4-5962-860a-82367ba9db34",
+    "business_space_id": null,
+    "slug": "van",
+    "name": {
+      "en": "Van",
+      "zh-Hant": "貨van"
+    },
+    "icon": "car-van",
+    "sort_order": 8,
+    "is_active": true
+  }
+]

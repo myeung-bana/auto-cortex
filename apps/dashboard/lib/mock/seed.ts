@@ -1,10 +1,18 @@
-import type { ActivityEvent } from "@autocore/utils"
+import type { ActivityEvent, Listing } from "@autocore/utils"
 import { CLIENTS } from "./fixtures/clients"
-import { LISTINGS } from "./fixtures/listings"
+import { RENTAL_LISTINGS } from "./fixtures/listings"
 import { BUSINESS_SPACES } from "./fixtures/business-spaces"
 import { USERS } from "./fixtures/users"
+import catalogListings from "../data/listings.json"
+import { mapCatalogListing } from "../taxonomies/map-records"
 
-export { BUSINESS_SPACES, USERS, CLIENTS, LISTINGS }
+const dealerListings: Listing[] = (
+  catalogListings as Parameters<typeof mapCatalogListing>[0][]
+).map((listing) => mapCatalogListing(listing, "vins-motors"))
+
+export const LISTINGS: Listing[] = [...dealerListings, ...RENTAL_LISTINGS]
+
+export { BUSINESS_SPACES, USERS, CLIENTS }
 
 export const ACTIVITY_EVENTS: ActivityEvent[] = [
   {

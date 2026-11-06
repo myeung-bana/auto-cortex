@@ -5,6 +5,8 @@ import type {
   CreateClientInput,
   CreateListingInput,
   Listing,
+  ListingImage,
+  ListingMoney,
   ListingStatus,
   User,
 } from "@autocore/utils"
@@ -18,6 +20,23 @@ export interface ListingFilters {
   search?: string
   status?: ListingStatus
   includeArchived?: boolean
+}
+
+export interface ListingPatch {
+  images?: ListingImage[]
+  price?: ListingMoney | null
+  year?: number
+  mileage?: number | null
+  transmission?: string | null
+  make?: string
+  bodyType?: string | null
+  fuelType?: string | null
+  engineCc?: number | null
+  exteriorColor?: string | null
+  interiorColor?: string | null
+  seats?: number | null
+  doors?: number | null
+  features?: string[]
 }
 
 export interface DashboardStats {
@@ -70,6 +89,11 @@ export interface DataProvider {
     businessSpaceId: string,
     listingId: string,
     input: Partial<CreateListingInput>
+  ): Promise<Listing | null>
+  patchListing(
+    businessSpaceId: string,
+    listingId: string,
+    patch: ListingPatch
   ): Promise<Listing | null>
   archiveListing(businessSpaceId: string, listingId: string): Promise<boolean>
   getActivityEvents(

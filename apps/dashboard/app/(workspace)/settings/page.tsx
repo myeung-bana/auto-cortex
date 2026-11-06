@@ -9,7 +9,7 @@ import {
 } from "@autocore/ui"
 import { Settings, Users } from "lucide-react"
 import { getDataProvider } from "@/lib/data"
-import { getSessionUser } from "@/lib/session/mock-session"
+import { getSessionUser } from "@/lib/session"
 import { ROUTES } from "@/lib/constants/routes"
 import { BUSINESS_NATURE_LABELS } from "@autocore/utils"
 
@@ -56,12 +56,12 @@ export default async function SettingsPage() {
         </Card>
 
         {user.role === "BUSINESS_OWNER" ? (
-          <Link href={ROUTES.settingsUsers}>
+          <Link href={ROUTES.userManagement}>
             <Card className="hover:bg-muted/50 h-full transition-colors">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
                   <Users className="h-5 w-5" />
-                  Team & Seats
+                  User Management
                 </CardTitle>
                 <CardDescription>
                   Manage users and view seat usage
@@ -80,7 +80,7 @@ export default async function SettingsPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-lg">
                 <Users className="h-5 w-5" />
-                Team & Seats
+                User Management
               </CardTitle>
               <CardDescription>
                 Only Business Owners can manage team members

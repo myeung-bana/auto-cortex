@@ -1,0 +1,134 @@
+[
+  {
+    "id": "c1d5d856-a420-5f62-aeff-b9977d2c43e6",
+    "business_space_id": null,
+    "slug": "white",
+    "name": {
+      "en": "White",
+      "zh-Hant": "白色"
+    },
+    "hex": "#FFFFFF",
+    "sort_order": 0,
+    "is_active": true
+  },
+  {
+    "id": "d6a41cba-69ef-5ea0-81b1-31136fa874f4",
+    "business_space_id": null,
+    "slug": "black",
+    "name": {
+      "en": "Black",
+      "zh-Hant": "黑色"
+    },
+    "hex": "#111111",
+    "sort_order": 1,
+    "is_active": true
+  },
+  {
+    "id": "53f11e94-e127-526e-9627-cbb524941646",
+    "business_space_id": null,
+    "slug": "silver",
+    "name": {
+      "en": "Silver",
+      "zh-Hant": "銀色"
+    },
+    "hex": "#C0C0C0",
+    "sort_order": 2,
+    "is_active": true
+  },
+  {
+    "id": "3366fac8-b626-527c-ad04-03789e28335a",
+    "business_space_id": null,
+    "slug": "grey",
+    "name": {
+      "en": "Grey",
+      "zh-Hant": "灰色"
+    },
+    "hex": "#808080",
+    "sort_order": 3,
+    "is_active": true
+  },
+  {
+    "id": "9727dadd-b055-51d2-862e-b6a9a39339a5",
+    "business_space_id": null,
+    "slug": "red",
+    "name": {
+      "en": "Red",
+      "zh-Hant": "紅色"
+    },
+    "hex": "#C8102E",
+    "sort_order": 4,
+    "is_active": true
+  },
+  {
+    "id": "d8f0229c-61a4-53e7-b372-4a3b843f8738",
+    "business_space_id": null,
+    "slug": "blue",
+    "name": {
+      "en": "Blue",
+      "zh-Hant": "藍色"
+    },
+    "hex": "#1F4E9C",
+    "sort_order": 5,
+    "is_active": true
+  },
+  {
+    "id": "a9fb8459-84e0-58d6-9590-3b8a464b5439",
+    "business_space_id": null,
+    "slug": "green",
+    "name": {
+      "en": "Green",
+      "zh-Hant": "綠色"
+    },
+    "hex": "#2E7D32",
+    "sort_order": 6,
+    "is_active": true
+  },
+  {
+    "id": "baacc46e-a199-5435-a379-ea6d49c6e9c8",
+    "business_space_id": null,
+    "slug": "brown",
+    "name": {
+      "en": "Brown",
+      "zh-Hant": "棕色"
+    },
+    "hex": "#6B4226",
+    "sort_order": 7,
+    "is_active": true
+  },
+  {
+    "id": "72811673-9659-53ce-92d7-0793e14c59ee",
+    "business_space_id": null,
+    "slug": "beige",
+    "name": {
+      "en": "Beige",
+      "zh-Hant": "米色"
+    },
+    "hex": "#D9C9A3",
+    "sort_order": 8,
+    "is_active": true
+  },
+  {
+    "id": "7ca82e22-3d79-511d-ac38-691d0e934401",
+    "business_space_id": null,
+    "slug": "gold",
+    "name": {
+      "en": "Gold",
+      "zh-Hant": "金色"
+    },
+    "hex": "#C9A227",
+    "sort_order": 9,
+    "is_active": true
+  },
+  {
+    "id": "bcbf1ae7-9327-55f3-96ab-88f0be76d462",
+    "business_space_id": null,
+    "slug": "orange",
+    "name": {
+      "en": "Orange",
+      "zh-Hant": "橙色"
+    },
+    "hex": "#F28C28",
+    "sort_order": 10,
+    "is_active": true
+  }
+]

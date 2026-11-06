@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 import { getDataProvider } from "../data"
 import { ROUTES } from "../constants/routes"
-import { getSessionUser } from "../session/mock-session"
+import { getSessionUser } from "../session"
 import type { CreateClientInput } from "@autocore/utils"
 
 export async function createClientAction(input: CreateClientInput) {

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "25f43385-7a05-5d4d-8af9-129bcf7f18e4",
+    "business_space_id": null,
+    "slug": "automatic",
+    "name": {
+      "en": "Automatic",
+      "zh-Hant": "自動波"
+    },
+    "sort_order": 0,
+    "is_active": true
+  },
+  {
+    "id": "3ff57d90-b8f6-5a2d-905f-6af6b73469d3",
+    "business_space_id": null,
+    "slug": "manual",
+    "name": {
+      "en": "Manual",
+      "zh-Hant": "手動波"
+    },
+    "sort_order": 1,
+    "is_active": true
+  },
+  {
+    "id": "3144780e-01ff-5feb-b87f-b5e431f95f9f",
+    "business_space_id": null,
+    "slug": "cvt",
+    "name": {
+      "en": "CVT",
+      "zh-Hant": "無段變速 (CVT)"
+    },
+    "sort_order": 2,
+    "is_active": true
+  },
+  {
+    "id": "8692b85a-878b-5120-b429-995f5ba556a4",
+    "business_space_id": null,
+    "slug": "dual-clutch",
+    "name": {
+      "en": "Dual-Clutch (DCT)",
+      "zh-Hant": "雙離合 (DCT)"
+    },
+    "sort_order": 3,
+    "is_active": true
+  }
+]

@@ -11,12 +11,14 @@ import { LISTING_STATUS_LABELS } from "@autocore/utils"
 interface ListingSearchProps {
   defaultQuery?: string
   defaultStatus?: string
+  view?: "list" | "grid"
   nature: BusinessNature
 }
 
 export function ListingSearch({
   defaultQuery = "",
   defaultStatus = "",
+  view = "list",
   nature,
 }: ListingSearchProps) {
   const router = useRouter()
@@ -33,9 +35,11 @@ export function ListingSearch({
       const params = new URLSearchParams()
       if (q.trim()) params.set("q", q.trim())
       if (s) params.set("status", s)
-      router.push(`${ROUTES.listings}?${params.toString()}`)
+      if (view === "grid") params.set("view", "grid")
+      const search = params.toString()
+      router.push(search ? `${ROUTES.listings}?${search}` : ROUTES.listings)
     },
-    [router]
+    [router, view]
   )
 
   return (

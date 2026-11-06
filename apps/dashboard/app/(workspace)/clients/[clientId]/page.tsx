@@ -9,9 +9,10 @@ import {
   PageHeader,
   Separator,
 } from "@autocore/ui"
-import { ArrowLeft, Pencil, Trash2 } from "lucide-react"
+import { Archive, ArrowLeft, Pencil } from "lucide-react"
+import { ConfirmAction } from "@/components/actions/confirm-action"
 import { getDataProvider } from "@/lib/data"
-import { getSessionUser } from "@/lib/session/mock-session"
+import { getSessionUser } from "@/lib/session"
 import { ROUTES } from "@/lib/constants/routes"
 import { formatDateTime } from "@autocore/utils"
 import { archiveClientAction } from "@/lib/actions/clients"
@@ -51,12 +52,13 @@ export default async function ClientDetailPage({
                 Edit
               </Link>
             </Button>
-            <form action={archiveClientAction.bind(null, client.id)}>
-              <Button type="submit" variant="destructive">
-                <Trash2 className="h-4 w-4" />
-                Archive
-              </Button>
-            </form>
+            <ConfirmAction
+              label="Archive client"
+              description={`Archive ${client.fullName}? The record will be hidden from the client list.`}
+              confirmLabel="Archive client"
+              icon={<Archive className="h-4 w-4" />}
+              onConfirm={archiveClientAction.bind(null, client.id)}
+            />
           </div>
         }
       />
